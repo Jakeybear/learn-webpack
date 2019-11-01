@@ -26,6 +26,10 @@ module.exports = {
 		// 	},
 		// }],
 		rules: [{
+			test: /\.js$/,
+			exclude: /node_modules/,
+			loader: "babel-loader"
+		},{
 			test: /\.(png|jpg|gif)$/,
 			use: {
 				loader: 'url-loader',
@@ -45,9 +49,12 @@ module.exports = {
 			}],
 		}],
 	},
-	plugins: [new HtmlWebpackPlugin({
-		template: 'src/index.html',
-	})],
+	plugins: [
+		new HtmlWebpackPlugin({
+			template: 'src/index.html',
+		}),
+
+	],
 	devServer: {
 		contentBase: path.join(__dirname, "dist"),
 		open: true,
